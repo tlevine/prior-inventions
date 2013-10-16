@@ -125,7 +125,7 @@ def manual():
       yield {
           'title': 'Simple Webcam',
           'url': 'https://chrome.google.com/webstore/detail/simple-webcam/cejgmnpegppdhkmmgmdobfelcdgfhkmo?hl=en',
-          'date': 'October 2012',
+          'date': datetime.date(2012, 10, 15),
           'description': "Simple Webcam is a webcam app for Chrome that just works. Open the app, click one button, then save your picture. That's it.",
       }
 
