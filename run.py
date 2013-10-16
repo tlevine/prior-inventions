@@ -27,12 +27,12 @@ def scraperwiki_date(relative_date):
 
 def scraperwiki():
     for i in range(1,14 + 1):
-        raw = get('https://scraperwiki.com/profiles/tlevine/?page=%d' % i).read()
+        raw = get('https://classic.scraperwiki.com/profiles/tlevine/?page=%d' % i).read()
         html1 = fromstring(raw)
         for repository in html1.xpath('//li[@class="code_object_line"]'):
             a = html1.xpath('descendant::h3/a[position()=2]')[0]
             title = a.xpath('text()')[0]
-            url = 'https://scraperwiki.com' + a.xpath('@href')[0]
+            url = 'https://classic.scraperwiki.com' + a.xpath('@href')[0]
             relative_date = html1.xpath('descendant::p[@class="context"][position()=2]/text()')[0].strip()
             date = scraperwiki_date(relative_date)
             html2 = fromstring(get(url).read())
@@ -126,15 +126,15 @@ def manual():
 def main():
     print header()
     for service in [
+        scraperwiki,
+        gitorious,
+        manual,
         github_tlevine,
         github_csv,
         github_csvsoundsystem,
         github_appgen,
         github_risley,
         github_mapshit,
-        scraperwiki,
-        gitorious,
-        manual,
     ]:
         for r in service():
             print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
