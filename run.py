@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 "List Tom's prior inventions and original works of authorship."
 import json, base64, datetime
 from lxml.html import fromstring
