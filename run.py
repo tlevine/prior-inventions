@@ -61,7 +61,7 @@ def github(username):
     'Get my GitHub repositories.'
     url = "https://api.github.com/users/%s/repos" % username
     r = get(url)
-    sleep(1)
+    sleep(60)
     for repository in json.load(r):
         d = json.load(get(repository['url'] + '/readme'))
         if d.get('message') == 'Not Found':
