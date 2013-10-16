@@ -15,14 +15,20 @@ def scraperwiki_date(relative_date):
         years = 1
         months = 0
 
+    elif relative_date == 'Created 2 years ago.':
+        years = 2
+        months = 0
+
     elif 'week' in relative_date:
         matcher = c.Literal('Created ') + c.Chars('0123456789') + c.Any(c.Literal(' months, '), c.Literal(' month, ')) + c.Chars('0123456789') + c.Literal(' weeks ago.')
         years = 0
         months = int(matcher(relative_date)[1])
+
     else:
         matcher = c.Literal('Created 1 year, ') + c.Chars('0123456789') + c.Any(c.Literal(' month ago.'), c.Literal(' months ago.'))
         years = 1
         months = int(matcher(relative_date)[1])
+
     return TODAY + datetime.timedelta(years, months)
 
 def scraperwiki():
