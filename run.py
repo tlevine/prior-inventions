@@ -145,7 +145,7 @@ def main():
     ]:
         for _r in service():
             r = copy(_r)
-#           print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
+            print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
 
 if __name__ == '__main__':
     main()
