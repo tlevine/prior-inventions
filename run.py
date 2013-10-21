@@ -6,6 +6,7 @@ from helpers import get
 import chomsky as c
 from time import sleep
 from unidecode import unidecode
+from copy import copy
 
 TODAY = datetime.date.today()
 
@@ -36,7 +37,7 @@ def scraperwiki():
         raw = get('https://classic.scraperwiki.com/profiles/tlevine/?page=%d' % i).read()
         html1 = fromstring(raw)
         for repository in html1.xpath('//li[@class="code_object_line"]'):
-            a = html1.xpath('descendant::h3/a[position()=2]')[0]
+            a = repository.xpath('descendant::h3/a[position()=2]')[0]
             title = a.xpath('text()')[0]
             url = 'https://classic.scraperwiki.com' + a.xpath('@href')[0]
             relative_date = html1.xpath('descendant::p[@class="context"][position()=2]/text()')[0].strip()
@@ -142,8 +143,9 @@ def main():
         github_risley,
         github_mapshit,
     ]:
-        for r in service():
-            print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
+        for _r in service():
+            r = copy(_r)
+#           print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
 
 if __name__ == '__main__':
     main()
