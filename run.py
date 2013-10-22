@@ -4,7 +4,6 @@ import json, base64, datetime
 from lxml.html import fromstring
 from helpers import get
 import chomsky as c
-from time import sleep
 from unidecode import unidecode
 from copy import copy
 import requests
