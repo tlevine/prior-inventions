@@ -155,15 +155,15 @@ def manual():
 def main():
     print header()
     for service in [
-        scraperwiki,
-        gitorious,
+#       scraperwiki,
+#       gitorious,
         manual,
         github_tlevine,
         github_csv,
         github_csvsoundsystem,
         github_appgen,
-        github_risley,
-        github_mapshit,
+#       github_risley,
+#       github_mapshit,
     ]:
         for _r in service():
             r = copy(_r)
