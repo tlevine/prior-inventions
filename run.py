@@ -87,10 +87,11 @@ def github(username):
                 'date': datetime.datetime.strptime(repository['pushed_at'], '%Y-%m-%dT%H:%M:%SZ') if repository['pushed_at'] else None,
                 'description': description,
             }
-        if 'link' not in r.headers:
+
+        if repository['url'] == 'https://api.github.com/repos/tlevine/zoetrope':
             break
-        else:
-            url = r.headers['link'].split(';')[0][1:-1]
+
+        url = r.headers['link'].split(';')[0][1:-1]
 
 github_tlevine = lambda: github('tlevine')
 github_csv = lambda: github('csv')
@@ -154,8 +155,8 @@ def main():
     ]:
         for _r in service():
             r = copy(_r)
-            print r['url']
-            # print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
+            # print r['url']
+            print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
 
 if __name__ == '__main__':
     main()
