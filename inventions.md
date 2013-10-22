@@ -13,21 +13,6 @@ service providers on behalf of the Company, or otherwise relate to or restrict m
 duties for the Company or any obligation I may have to the Company:
 
 
-
-------------------------------------------------------------------------------------------
-**Title**: Simple Webcam
-**Web address**: https://chrome.google.com/webstore/detail/simple-webcam/cejgmnpegppdhkmmgmdobfelcdgfhkmo?hl=en
-**Date**: October 2012
-**Abbreviated description**: Simple Webcam is a webcam app for Chrome that just works. Open the app, click one button, then save your picture. That's it....
-
-
-------------------------------------------------------------------------------------------
-**Title**: .medial_temporal_lobe
-**Web address**: https://github.com/tlevine/.medial_temporal_lobe
-**Date**: October 2013
-**Abbreviated description**: 
-
-
 ------------------------------------------------------------------------------------------
 **Title**: .prophyl-teh-awesum
 **Web address**: https://github.com/tlevine/.prophyl-teh-awesum
