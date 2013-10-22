@@ -130,16 +130,11 @@ EMPLOYEE:
 
 def work(title, url, date, description):
     return '''
-%(title)s
 ------------------------------------------------------------------------------------------------
 **Title**: %(title)s
-
 **Web address**: %(url)s
-
 **Date**: %(date)s
-
 **Abbreviated description**: %(description)s
-
 ''' % {'title':title,'url':url,'date':date.strftime('%B %Y') if date else 'Unknown',
     'description':description[:140] + '...' if len(description) > 0 else ''}
 
