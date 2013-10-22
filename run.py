@@ -151,6 +151,7 @@ def manual():
           'description': "Simple Webcam is a webcam app for Chrome that just works. Open the app, click one button, then save your picture. That's it.",
       }
 
+
 def main():
     print header()
     for service in [
@@ -168,6 +169,140 @@ def main():
             r = copy(_r)
             # print r['url']
             print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
+    print '''
+The following articles are included in the website www.thomaslevine.com
+(https://github.com/tlevine/www.thomaslevine.com).
+
+* About Thomas Levine
+* Ampersands
+* Attendees decide between statistics talks
+* Arrays
+* Bare domain redirect server
+* BeagleBone Power Supply
+* Tom Life Best Practices
+* BetterCoach and the merits of the inferior schedule-finder
+* Big Data Ergonomics
+* Bits
+* Bookmarks
+* Inspiration for questions
+* Burqua
+* Scalable Big Data Cloud ROI Agile Fixie API with HTML9 Responsive Boilerstrap JS
+* CentOS cluster slaves
+* On balancing checkbooks
+* Design for varied ability
+* Christmas Gifts
+* Citizen Science Resources
+* Couch-style data versioning in sqlite
+* Covariance drawings
+* Curriculum vitae
+* Data business models
+* Meeting nice people at DataKind events
+* Another definition of "big data"
+* The mindset of data science
+* A new email address
+* Local ScraperWiki Library
+* DumpTruck Version 0.0.3
+* Earmuffs
+* Emergency Exit Only
+* English and American
+* Everyday Living for Girls
+* Do all "analysts" use Excel?
+* Foo
+* Films I like
+* Five stages of PhD
+* FMS Symphony
+* gastronomify
+* Gullible
+* Words that are hard to spell
+* Hacks Hackers Buenos Aires Media Party
+* Higher-power distance measures
+* Hip 'Data' Terms
+* The Hovering Cycle
+* htmltable2matrix
+* imapfilter
+* My personal computer infrastructure
+* Jaywalking
+* Nude Jello Wrestling
+* Where do people position computer keyboards?
+* Klout jump on May 25
+* Materials for leaning Angular
+* Learn Computers Through ______
+* Arrays
+* On listening
+* My appointment and termination at my high school newspaper
+* Measuring Skin Temperature
+* Prevalence of Middle Names
+* Microfinance Data Scraping
+* Moments of a function
+* Effect of the number pad on mousing location
+* Movies I like
+* News Hack Day SF
+* Addiction Recovery Meetings
+* New York Pizza
+* Open by default
+* Open data licensing
+* Open data possibilities
+* OpenPrism
+* The Orpheus Myth
+* How I parse PDF files
+* pbdq
+* How principle component analysis works
+* Industrial Remote-Controlled Peanut Butterers Parts & Supplies and Bagels Company
+* Pirate Trends
+* Preserving whitespace in haml
+* Random Person of the Week
+* R graphics tricks that you probably shouldn't use
+* Real World Algorithms
+* Reciprocity
+* The Ridership Rachenitsa
+* Unsanitary conditions in dormitory bathrooms
+* R spells for data wizards
+* cRowdsouRcing
+* Capital projects
+* Assessed property values
+* Where does the "market value" on your tax bill come from?
+* Scarsdale High School bus schedule weirdness
+* Scarsdale Village tax rates and inflation
+* Changes in appropriations to Scarsdale Village funds
+* Scarsdale data journalism
+* scp wrapper
+* Handling exceptions in scrapers
+* Installing Selenium
+* Multisensory data experiences
+* setxkbmap aliases
+* Shakespeare on the internet
+* Tests for your shell
+* Soap-dispenser placement
+* Open Calendars
+* What's in a count?
+* What file formats are on the data portals?
+* Progeny of Ten Socrata Datasets
+* How to use Socrata's site metrics API
+* Analyze all the datasets
+* Who uses Socrata's analysis tools?
+* Statistics through doodles
+* The Street Sign Protocol
+* What's in a table?
+* Teaching Data Science
+* Tea Party
+* Searching lots of inconveniently formatted files at once
+* Terminal history
+* Things to think about when you're building products on open data
+* Things to read
+* tmux aliases
+* treasury.io
+* Why does turning into a zombie seem unpleasant?
+* Twinkle
+* Twitter Scraper Library
+* Why don't people use this reading room?
+* URL Encoding and Decoding
+* Utlity of Cobalt
+* My visit to Socrata, and data analysis about data analysis
+* Things I want
+* What I think people who want to learn programming
+* World -> Data -> World
+* Datestamped archives of a webpage
+    '''
 
 if __name__ == '__main__':
     main()
