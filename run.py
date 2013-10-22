@@ -88,7 +88,7 @@ def github(username):
                 'description': description,
             }
 
-        if repository['url'] == 'https://api.github.com/repos/tlevine/zoetrope':
+        if repository['url'] == 'https://api.github.com/repos/tlevine/zoetrope' or 'link' not in r.headers:
             break
 
         url = r.headers['link'].split(';')[0][1:-1]
