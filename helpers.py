@@ -24,6 +24,5 @@ def get(url, cachedir = '.'):
     # Download
     if not os.path.exists(local_file):
        urllib.urlretrieve(url, filename = local_file)
-       sleep(2)
 
     return open(local_file)
