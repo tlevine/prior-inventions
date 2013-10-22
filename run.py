@@ -42,6 +42,9 @@ def scraperwiki():
             url = 'https://classic.scraperwiki.com' + a.xpath('@href')[0]
             relative_date = html1.xpath('descendant::p[@class="context"][position()=2]/text()')[0].strip()
             date = scraperwiki_date(relative_date)
+            if url == 'https://classic.scraperwiki.com/scrapers/tahrirsupplies_map/':
+                continue
+            # print url
             html2 = fromstring(get(url).read())
             description = html2.get_element_by_id('divAboutScraper').text_content()
             yield {
