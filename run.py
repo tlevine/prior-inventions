@@ -7,6 +7,7 @@ import chomsky as c
 from time import sleep
 from unidecode import unidecode
 from copy import copy
+import requests
 
 TODAY = datetime.date.today()
 
@@ -70,21 +71,25 @@ def gitorious():
 def github(username):
     'Get my GitHub repositories.'
     url = "https://api.github.com/users/%s/repos" % username
-    r = get(url)
-    sleep(60)
-    for repository in json.load(r):
-        d = json.load(get(repository['url'] + '/readme'))
-        if d.get('message') == 'Not Found':
-            description = ''
-        else:
-            description = base64.decodestring(d.get('content', ''))
+    while True:
+        r = requests.get(url)
+        for repository in json.loads(r.text):
+            d = json.load(get(repository['url'] + '/readme'))
+            if d.get('message') == 'Not Found':
+                description = ''
+            else:
+                description = base64.decodestring(d.get('content', ''))
 
-        yield {
-            'title': repository['name'],
-            'url': repository['url'],
-            'date': datetime.datetime.strptime(repository['pushed_at'], '%Y-%m-%dT%H:%M:%SZ') if repository['pushed_at'] else None,
-            'description': description,
-        }
+            yield {
+                'title': repository['name'],
+                'url': repository['url'],
+                'date': datetime.datetime.strptime(repository['pushed_at'], '%Y-%m-%dT%H:%M:%SZ') if repository['pushed_at'] else None,
+                'description': description,
+            }
+        if 'link' not in r.headers:
+            break
+        else:
+            url = r.headers['link'].split(';')[0][1:-1]
 
 github_tlevine = lambda: github('tlevine')
 github_csv = lambda: github('csv')
@@ -148,7 +153,8 @@ def main():
     ]:
         for _r in service():
             r = copy(_r)
-            print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
+            print r['url']
+            # print work(r['title'].decode('utf-8'), r['url'].decode('utf-8'), r['date'], unidecode(r['description']))
 
 if __name__ == '__main__':
     main()
