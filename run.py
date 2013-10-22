@@ -7,6 +7,9 @@ import chomsky as c
 from unidecode import unidecode
 from copy import copy
 import requests
+import os
+
+GITHUB_QUERYSTRING = os.environ['GITHUB_TOKEN'] if 'GITHUB_TOKEN' in os.environ else ''
 
 TODAY = datetime.date.today()
 
@@ -71,9 +74,9 @@ def github(username):
     'Get my GitHub repositories.'
     url = "https://api.github.com/users/%s/repos" % username
     while True:
-        r = requests.get(url)
+        r = requests.get(url + '?' + GITHUB_QUERYSTRING)
         for repository in json.loads(r.text):
-            d = json.load(get(repository['url'] + '/readme'))
+            d = json.load(get(repository['url'] + '/readme?' + GITHUB_QUERYSTRING))
             if d.get('message') == 'Not Found':
                 description = ''
             else:
