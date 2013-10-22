@@ -83,7 +83,7 @@ def github(username):
 
             yield {
                 'title': repository['name'],
-                'url': repository['url'],
+                'url': repository['url'].replace('https://api.github.com/repos/', 'https://github.com/'),
                 'date': datetime.datetime.strptime(repository['pushed_at'], '%Y-%m-%dT%H:%M:%SZ') if repository['pushed_at'] else None,
                 'description': description,
             }
@@ -102,8 +102,30 @@ github_mapshit = lambda: github('mapshit')
 
 def header():
     return '''
-EXHIBIT A: LIST OF PRIOR INVENTIONS AND ORIGINAL WORKS OF AUTHORSHIP EXCLUDED UNDER SECTION 4(a)
-================================================================================================
+
+EXHIBIT A: LIST OF PRIOR INVENTIONS AND ORIGINAL WORKS OF AUTHORSHIP EXCLUDED UNDER SECTION 4(a) CONFLICTING AGREEMENTS DISCLOSED UNDER SECTION 10(B)
+===========================================================================================
+
+
+The following is a list of (i) all inventions that belong solely to me or belong to me jointly with others, and
+that relate in any way to any of the Company's actual or proposed businesses, products, services, or
+research and development, and which are not assigned to the Company pursuant to this Agreement and (ii)
+all agreements, if any, with a current or former client, employer, or any other person or entity, that may
+restrict my ability to accept employment with the Company or my ability to recruit or engage customers or
+service providers on behalf of the Company, or otherwise relate to or restrict my ability to perform my
+duties for the Company or any obligation I may have to the Company:
+
+'''
+
+def footer():
+    print '''
+--------------------------------------------------------------------------
+
+Except as indicated above on this exhibit, I have no inventions, improvements or original works to disclose
+pursuant to Section 4(a) of this Agreement and no agreements to disclose pursuant to Section 10(b) of this
+Agreement.
+
+EMPLOYEE:
 '''
 
 def work(title, url, date, description):
@@ -116,21 +138,10 @@ def work(title, url, date, description):
 
 **Date**: %(date)s
 
-**Description**: %(description)s
+**Abbreviated description**: %(description)s
 
-
-
-
-
-
-
-
-
-
-
-
-
-''' % {'title':title,'url':url,'date':date.strftime('%B %Y') if date else 'Unknown','description':description}
+''' % {'title':title,'url':url,'date':date.strftime('%B %Y') if date else 'Unknown',
+    'description':description[:140] + '...' if len(description) > 0 else ''}
 
 def manual():
       yield {
