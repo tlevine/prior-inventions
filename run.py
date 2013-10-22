@@ -9,8 +9,7 @@ from copy import copy
 import requests
 import os
 
-GITHUB_QUERYSTRING = os.environ['GITHUB_TOKEN'] if 'GITHUB_TOKEN' in os.environ else ''
-
+GITHUB_QUERYSTRING = 'access_token=' + os.environ['GITHUB_TOKEN'] if 'GITHUB_TOKEN' in os.environ else ''
 TODAY = datetime.date.today()
 
 def scraperwiki_date(relative_date):
