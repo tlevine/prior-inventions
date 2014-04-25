@@ -1,9 +1,3 @@
-
-
-EXHIBIT A: LIST OF PRIOR INVENTIONS AND ORIGINAL WORKS OF AUTHORSHIP EXCLUDED UNDER SECTION 4(a) CONFLICTING AGREEMENTS DISCLOSED UNDER SECTION 10(B)
-===========================================================================================
-
-
 The following is a list of (i) all inventions that belong solely to me or belong to me jointly with others, and
 that relate in any way to any of the Company's actual or proposed businesses, products, services, or
 research and development, and which are not assigned to the Company pursuant to this Agreement and (ii)
@@ -542,10 +536,6 @@ The following articles are included in the website.
 competition. This repository is the main repository ...
 
 
--------------------------------------------------------
 
-Except as indicated above on this exhibit, I have no inventions, improvements or original works to disclose
-pursuant to Section 4(a) of this Agreement and no agreements to disclose pursuant to Section 10(b) of this
-Agreement.
+------------------------------------------------------------------------------------------
 
-EMPLOYEE:
