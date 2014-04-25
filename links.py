@@ -9,17 +9,19 @@ from picklecache import get
 def github():
     def pages():
         for page_number in itertools.count(1):
-            response = get('https://api.github.com/users/tlevine/repos', params = {'page': page_number})
+            response = get('https://api.github.com/users/tlevine/repos?page=%d' % page_number)
             for repository in json.loads(response.text):
                 yield repository['html_url']
 
-    for the_page in itertools.takewhile(lambda r: r != [], pages()):
-        yield from the_page
+    for link in itertools.takewhile(lambda r: r != [], pages()):
+        yield link
 
 def thomaslevine():
-    response = get('http://thomaslevine.com/!/')
+    url = 'http://thomaslevine.com/!/'
+    response = get(url)
     html = lxml.html.fromstring(response.text)
-    return map(str, html.xpath('//a'))
+    html.make_links_absolute(url)
+    return (str(link) for link in html.xpath('//a/@href') if link.startswith(url))
 
 def main():
     for link in itertools.chain(thomaslevine(), github()):
