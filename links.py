@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import re
 import sys
 import itertools
 import json
@@ -23,8 +24,17 @@ def thomaslevine():
     html.make_links_absolute(url)
     return (str(link) for link in html.xpath('//a/@href') if link.startswith(url))
 
+def scraperwiki():
+    for page_number in itertools.count(1):
+        url = 'https://classic.scraperwiki.com/profiles/tlevine/?page=%d' % page_number
+        response = get(url)
+        html = lxml.html.fromstring(response.text)
+        html.make_links_absolute(url)
+        for href in html.xpath('//li[@class="code_object_line"]/descendant::h3/a[position()=2]/@href'):
+            yield re.sub(r'index.html$', '', str(href))
+
 def main():
-    for link in itertools.chain(thomaslevine(), github()):
+    for link in itertools.chain(scraperwiki(), thomaslevine(), github()):
         sys.stdout.write('%s\n' % link)
 
 if __name__ == '__main__':
